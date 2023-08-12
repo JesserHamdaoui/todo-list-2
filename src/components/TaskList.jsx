@@ -4,7 +4,7 @@ const TaskList = ({tasks, setTasks}) => {
 
     const handleEdit = (key) => {
         console.log(key)
-        setTasks(tasks.map(task => (task.id === key ? {...tasks, isEditing: !task.isEditing} : task ))
+        setTasks(tasks.map(task => (task.key === key ? {...task, isEditing: !task.isEditing} : task ))
     )}
 
     const handleDelete = (key) => {
@@ -22,10 +22,10 @@ const TaskList = ({tasks, setTasks}) => {
                 {tasks.map(task => {
                     if(task.isEditing) {
                         return(
-                            <div>
+                            <li key={task.key}>
                                 <input type="text" />
                                 <button>OK</button>
-                            </div>
+                            </li>
                         )
                     }
                     else {
