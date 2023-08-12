@@ -1,0 +1,30 @@
+.done {
+    text-decoration: line-through;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    max-width: 400px;
+}
+
+.btns {
+    display: flex;
+    align-items: center;
+}
+
+.btns p {
+    padding-left: 15px;
+    text-decoration: underline;
+    font-size: 11px;
+}
+
+.btns p:nth-child(1):hover{
+    cursor: pointer;
+    color: green;
+}
+
+.btns p:nth-child(2):hover{
+    cursor: pointer;
+    color: red;
+}
