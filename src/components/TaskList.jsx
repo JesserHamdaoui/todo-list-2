@@ -6,6 +6,13 @@ const TaskList = ({tasks, setTasks}) => {
     const [input, setInput] = useState('')
 
     const handleEdit = (targetTask) => {
+        if(targetTask.done || tasks.filter(task => {
+            return(
+                task.isEditing
+            )
+        }).length !== 0) {
+            return false
+        }
         setInput(targetTask.text)
         setTasks(tasks.map(task => (task.key === targetTask.key ? {...task, isEditing: !task.isEditing} : task ))
     )}
