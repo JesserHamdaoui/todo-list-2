@@ -6,6 +6,7 @@ const NewTask = ({tasks, setTasks}) => {
 
     const handleAddTask = (e) => {
         e.preventDefault()
+        if(!input) return false
         setTasks([...tasks, {key: tasks.length + 1, done: false, text: input}])
         setInput('')
     }
@@ -15,11 +16,12 @@ const NewTask = ({tasks, setTasks}) => {
     }
 
     return ( 
-        <div className="container">
+        <div className="add-container">
             <form>
                 <input type="text" placeholder="Add a task" value={input} onChange={handleChange}/>
                 <button onClick={handleAddTask}>Add</button>
             </form>
+            <hr />
         </div>
      );
 }

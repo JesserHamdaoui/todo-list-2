@@ -30,6 +30,7 @@ const TaskList = ({tasks, setTasks}) => {
     }
 
     const handleUpdate = (key) => {
+        if(!input) return false
         setTasks(tasks.map(task => (task.key === key ? {...task, isEditing: !task.isEditing, text: input} : task ))
     )}
 

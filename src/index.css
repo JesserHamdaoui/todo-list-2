@@ -7,4 +7,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.App {
+  height: 100vh;
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.container {
+  background-color: #fff;
+  max-width: 600px;
+  padding: 25px;
+  border-radius: 2.5rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
