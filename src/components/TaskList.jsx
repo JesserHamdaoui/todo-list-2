@@ -45,8 +45,8 @@ const TaskList = ({tasks, setTasks}) => {
                     if(task.isEditing) {
                         return(
                             <li key={task.key}>
-                                <input value={input} onChange={(e) => handleChange(e)} type="text" />
-                                <button onClick={() => handleUpdate(task.key)}>OK</button>
+                                <input className='edit-input' value={input} onChange={(e) => handleChange(e)} type="text" />
+                                <button className='ok-btn' onClick={() => handleUpdate(task.key)}>OK</button>
                             </li>
                         )
                     }
