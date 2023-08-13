@@ -26,7 +26,7 @@ const TaskList = ({tasks, setTasks}) => {
         setTasks(tasks.map(task => (task.key === key ? {...task, isEditing: !task.isEditing, text: input} : task ))
     )}
 
-    const toogleCheckbox = (key) => {
+    const toggleCheckbox = (key) => {
         setTasks(tasks.map(task => (task.key === key ? {...task, done: !task.done} : task ))
     )}
     
@@ -45,7 +45,7 @@ const TaskList = ({tasks, setTasks}) => {
                     else {
                         return(
                             <li key={task.key}>
-                                <input type="checkbox" checked={task.done? true:false} onChange={() => toogleCheckbox(task.key)}/>
+                                <input type="checkbox" checked={task.done? true:false} onChange={() => toggleCheckbox(task.key)}/>
                                 <p className={task.done? 'done':''}>{task.text}</p>
                                 <div className="btns">
                                     <p onClick={() => handleEdit(task)}>edit</p>
