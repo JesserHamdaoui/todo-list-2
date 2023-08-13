@@ -1,10 +1,13 @@
+import { useState } from 'react'
 import './task-list.css'
 
 const TaskList = ({tasks, setTasks}) => {
 
-    const handleEdit = (key) => {
-        console.log(key)
-        setTasks(tasks.map(task => (task.key === key ? {...task, isEditing: !task.isEditing} : task ))
+    const [input, setInput] = useState('')
+
+    const handleEdit = (targetTask) => {
+        setInput(targetTask.text)
+        setTasks(tasks.map(task => (task.key === targetTask.key ? {...task, isEditing: !task.isEditing} : task ))
     )}
 
     const handleDelete = (key) => {
@@ -15,16 +18,23 @@ const TaskList = ({tasks, setTasks}) => {
         }))
     }
 
+    const handleChange = (e) => {
+        setInput(e.target.value)
+    }
+
+    const handleUpdate = (key) => {
+        setTasks(tasks.map(task => (task.key === key ? {...task, isEditing: !task.isEditing, text: input} : task ))
+    )}
+    
     return ( 
         <div>
             <ul>
-                {console.log(tasks)}
                 {tasks.map(task => {
                     if(task.isEditing) {
                         return(
                             <li key={task.key}>
-                                <input type="text" />
-                                <button>OK</button>
+                                <input value={input} onChange={(e) => handleChange(e)} type="text" />
+                                <button onClick={() => handleUpdate(task.key)}>OK</button>
                             </li>
                         )
                     }
@@ -33,7 +43,7 @@ const TaskList = ({tasks, setTasks}) => {
                             <li key={task.key}>
                                 <p className={task.done? 'done':''}>{task.text}</p>
                                 <div className="btns">
-                                    <p onClick={() => handleEdit(task.key)}>edit</p>
+                                    <p onClick={() => handleEdit(task)}>edit</p>
                                     <p onClick={() => handleDelete(task.key)}>delete</p>
                                 </div>
                             </li>   
