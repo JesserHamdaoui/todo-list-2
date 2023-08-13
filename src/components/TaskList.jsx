@@ -25,6 +25,10 @@ const TaskList = ({tasks, setTasks}) => {
     const handleUpdate = (key) => {
         setTasks(tasks.map(task => (task.key === key ? {...task, isEditing: !task.isEditing, text: input} : task ))
     )}
+
+    const toogleCheckbox = (key) => {
+        setTasks(tasks.map(task => (task.key === key ? {...task, done: !task.done} : task ))
+    )}
     
     return ( 
         <div>
@@ -41,6 +45,7 @@ const TaskList = ({tasks, setTasks}) => {
                     else {
                         return(
                             <li key={task.key}>
+                                <input type="checkbox" checked={task.done? true:false} onChange={() => toogleCheckbox(task.key)}/>
                                 <p className={task.done? 'done':''}>{task.text}</p>
                                 <div className="btns">
                                     <p onClick={() => handleEdit(task)}>edit</p>
