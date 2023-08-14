@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { NewTask, TaskList } from "./components";
 
 function App() {
-  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks")));
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem("tasks")).filter((task) => {
+      return !task.done;
+    })
+  );
 
   useEffect(
     () => localStorage.setItem("tasks", JSON.stringify(tasks)),
